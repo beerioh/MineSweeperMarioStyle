@@ -1,0 +1,290 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+     
+}
+body{
+  /* background-color: rgb(6, 15, 34);  */
+  display: flex;
+  flex-direction: row;
+  /* flex: content; */
+  background-image:url(/img/marioBackground.gif);
+  background-blend-mode: overlay;
+  background-color: rgba(3, 9, 44, 0.67);
+  background-repeat: no-repeat;
+  background-position-y:bottom;
+  position: relative;
+}
+.globalContainer{  
+width: 100vw;
+height: 100vh;
+position: relative;
+align-items: center;
+justify-content: space-between;
+flex-direction: row;
+}
+.hide{
+  display: none;
+}
+
+
+.midContainer{
+   display: flex;
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   justify-content: center;
+}
+.gameContainer{
+z-index: 8;
+border-radius: 35px;
+position: absolute;
+background-size:cover;
+display: flex;
+width:60%;
+height: 75%;
+top: 4%;
+align-items: center;
+justify-content: center;
+ background-color: #2f6a95ee;  
+ border: 2px solid gold;
+ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+.volume{
+  z-index: 10;
+  position: absolute;
+  top: 5%;
+  left: 5.5%;
+  
+  
+}
+.topBar{
+top: 0;
+position: absolute;
+display: flex;
+justify-content:center;
+padding-top: auto;
+align-items: center;
+border-bottom: 3px solid gold;
+box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;border-radius: 35px;
+height: 12%;
+width: 100%;
+left: 0%;
+background-color: rgb(109, 74, 10);
+}
+
+.spaceL{
+  justify-content: center;
+  z-index: 25;
+  display: flex;
+  flex-direction: row;
+  z-index: 9;
+  line-height: 50px;
+   width: 15%;
+   height: 80%;
+   left: 3%;
+   margin-top: 0%;
+   position: relative;
+}
+.livesTitle{
+  width: 100%;
+  font-size: 40px;
+   font-family: 'Bungee Spice', cursive;
+}
+.spaceL1{
+  position: absolute;
+  background-image: url(../img/hart.gif);
+  background-size:80%;
+  background-repeat: no-repeat;
+   width:50%;
+  height: 22%;
+  z-index: 9;
+  top:7%;
+  -webkit-filter: drop-shadow(10px 10px 10px #222);
+filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
+}
+.spaceL2{
+  position: absolute;
+  background-image: url(../img/hart.gif);
+  background-size:80%;
+  background-repeat: no-repeat;
+   width:50%;
+  height: 22%;
+  z-index: 9;
+  top:29%;
+
+   -webkit-filter: drop-shadow(10px 10px 10px #222);
+filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
+}
+.spaceL3{
+  position: absolute;
+  z-index: 25;
+  background-image: url(../img/hart.gif);
+  background-size:80%;
+  background-repeat: no-repeat;
+  width:50%;
+  height: 22%;
+  /* margin-top: 1%; */
+  top:51%;
+  /* left: 4%; */
+  /* margin-left: 5%; */
+   -webkit-filter: drop-shadow(10px 10px 10px #222);
+filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
+}
+.score{
+position: absolute;
+font-family: 'Bungee Spice', cursive;
+text-align: center;
+color: white;
+font-size: 40px;
+height: 100%;
+width: 10%;
+left:4% ;
+font-size: 60px;
+height: 80%;
+width: 10%;
+bottom: 20%;
+-webkit-filter: drop-shadow(50px 50px 10px #222);
+filter: drop-shadow(5px 5px 10px rgb(8, 4, 0));
+}
+.startGameBtn{
+background-position: center;
+border: none;
+background-color: rgba(240, 255, 255, 0);
+background-image: url(../img/game-button.png);
+height: 100%;
+background-size: contain;
+background-repeat: no-repeat;
+width: 20%;
+right: 2%;
+cursor: pointer;
+-webkit-filter: drop-shadow(10px 10px 10px #222);
+filter: drop-shadow(0px 25px 25px #222);
+
+}
+.startGameBtn:hover{
+-webkit-filter: drop-shadow(10px 10px 10px #222);
+filter: drop-shadow(0px 0px 25px rgb(198, 99, 7));}
+
+.timer{
+  position: absolute;
+font-family: 'Bungee Spice', cursive;
+text-align: center;
+color: white;
+font-size: 60px;
+height: 80%;
+width: 10%;
+top: 1%;
+right:8%;
+-webkit-filter: drop-shadow(50px 50px 10px #222);
+filter: drop-shadow(5px 5px 10px rgb(8, 4, 0));
+}
+.board{
+position: absolute;
+display: flex;
+flex-direction: column;
+ border: 1px solid gold;
+background-color: rgb(130, 169, 196);
+width:fit-content;
+top: 18%;
+
+
+}
+.board-cells{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+.tableRow{
+  /* border-spacing: 20px; */
+}
+.cell{
+ width: 25px;
+ height: 25px;
+ border: 2px solid rgb(55, 54, 54);
+ cursor: pointer;
+ text-align: center;
+ font-size: 25px;
+ font-weight: bold;
+  border-top:3px solid rgba(9, 8, 8, 0.557);
+  border-left:3px solid rgba(33, 31, 31, 0.791);
+  border-right:3px solid rgba(158, 122, 44, 0.684);
+  border-bottom:3px solid rgba(219, 156, 74, 0.817);
+}
+.scoreTable{
+position: absolute;
+}
+.spaceR{
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  color: red;
+   width: 17%;
+   height: 58%;
+   position: absolute;
+   align-items: right;
+   right: 1%;
+   top: 11%;
+   font-size: 30px;
+   font-family: 'Bungee Spice', cursive;
+   line-height: 42px;
+  
+}
+.emoji{
+ position: absolute;
+  right: 18%; 
+ top: 40%;
+  height: 60%;
+  width: 70%;
+  background-image: url(../img/Beginner-emoji.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.show{
+  background-color: #d2d2d2;
+  border-top:2px solid white;
+  border-left:2px solid white;
+  border-right:2px solid rgb(126, 126, 126);
+  border-bottom:2px solid rgb(129, 128, 128);
+  cursor: not-allowed;
+}
+.noClick {
+  pointer-events: none;
+}
+.mineImg{
+  background-color: none;
+  background-image: url(../img/mine.png);
+  background-size: contain;
+}
+.flagged{
+  background-color:antiquewhite;
+  background-image: url(../img/flag.png);
+  background-size:cover;
+}
+.color1{
+color: red;
+}
+.color2{
+color: green;
+}
+.color3{
+color: blue;
+}
+.color4{
+color: rgb(91, 66, 4);
+}
+.color5{
+color: blueviolet;
+}
+.color6{
+  color: darkblue;
+}
+.color0{
+  color: #d2d2d200;
+}
+

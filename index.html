@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./css/style.css">
+    <title>Beeri Ohayon's MineSweeper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+</head>
+<body class="globalContainer">
+  <div class="volume">&#128264; <input type="range" id="volume-control">
+         <audio class="audio" id="startGameAudio" src="audio/01 overworld bgm.mp3"></audio>
+         <audio class="audio" id="difficultyLevel" src="audio/smb_coin.wav"></audio>
+         <audio class="audio" id="endGameAudio" src="audio/smb_gameover.wav"></audio>
+         <audio class="audio" id="winingGameAudio" src="audio/smb_stage_clear.wav"></audio>
+        </div>
+    <div class="spaceL">
+      <div class="livesTitle">Lives Left</div>
+    <div class="spaceL1 hide"></div>
+    <div class="spaceL2 hide"></div>
+    <div class="spaceL3 hide"></div>
+    </div>
+    <div class="midContainer" >
+      <div class="gameContainer">
+     <div class="topBar">
+      
+         <div class="score">2</div>
+         
+         <button class="startGameBtn" onclick="initGame()"></button>
+         <div class="timer">000</div>
+     </div>
+     <table class="board">
+        <tbody class="board-cells">
+    </tbody>
+     </table>
+     <div class="scoreTable"></div>
+      </div>
+    </div>
+    <div class="spaceR" >
+     <div class="difLevels">
+       <fieldset id="status">
+          <legend>Difficulty Level</legend>
+          <div>
+            <input type="radio" id="Beginner" name="drone" value="huey"
+                  checked>
+            <label for="huey">Beginner</label>
+          </div>
+
+          <div>
+            <input type="radio" id="Advanced" name="drone" value="dewey">
+            <label for="dewey">Advanced</label>
+          </div>
+
+          <div>
+            <input type="radio" id="Expert" name="drone" value="louie">
+            <label for="louie">Expert</label>
+          </div>
+          <div>
+            <input type="radio" id="Bored" name="drone" value="louie">
+            <label for="louie">Really Bored</label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="emoji"></div>
+    </div>
+    
+
+    <script src="./js/game.js"></script>
+</body>
+</html>
