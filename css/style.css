@@ -9,7 +9,7 @@ body{
   display: flex;
   flex-direction: row;
   /* flex: content; */
-  background-image:url(/img/marioBackground.gif);
+  background-image:url(img/marioBackground.gif);
   background-blend-mode: overlay;
   background-color: rgba(3, 9, 44, 0.67);
   background-repeat: no-repeat;
