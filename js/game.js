@@ -11,7 +11,7 @@ var audio
 let volume = document.getElementById("volume-control");
 setVolume ()
 function setVolume (){
-  console.clear()
+//   console.clear()
   Array.from(document.querySelectorAll("audio")).forEach(function(audio){
       audio.volume = volume.value == "" ? 50 : volume.value / 100;
     })
@@ -24,6 +24,7 @@ var winingSound = document.getElementById('winingGameAudio')
 var loosingSound = document.getElementById('endGameAudio')
 const emojiImg = document.querySelector(".emoji")
 const victoryImg = document.querySelector(".gameContainer")
+const gGameBoard = document.querySelector(".board")
 const FLAG_IMG = `src="../img/flag.png"`
 const beginner = {i: 4,j:4, m: 2 };
 const advanced = { i: 8, j: 8 ,m:14}
@@ -160,7 +161,6 @@ function renderBoard(board) {
             if (currCell.isMine && currCell.isShown) { cellClass += ' mineImg', currCell.minesAroundCount = "" }
             if (currCell.noClick) {cellClass += ' noClick'}
             if (currCell.isShown) { cellClass += ' show', mineCountShow = currCell.minesAroundCount }//checkNeighbors(i, j)
-            // if (currCell.isFlagged && currCell.flagged) { cellClass += ' marked' }
             if (currCell.isFlagged) { cellClass += ' flagged' }
             if (!currCell.checkNeighborsCounter &&!currCell.minesAroundCount && currCell.isShown) {
                 currCell.checkNeighborsCounter=1
@@ -201,15 +201,19 @@ function checkNeighbors(rowIdx, colIdx) {
         }renderBoard(gBoard)
 }
 function mineClicked() {
-    startGameSound.volume=0
+
+    startGameSound.pause()
     loosingSound.play()
+    gGameBoard.style.display="none"
     emojiImg.style.backgroundImage = "url(img/crying-emoji.gif)";
     victoryImg.style.backgroundImage = "url(img/gameOver.gif)";
     setTimeout(() => {
+        gGameBoard.style.display="flex"
         emojiImg.style.backgroundImage = "url(img/Beginner-emoji.gif)"
         victoryImg.style.backgroundImage = "none";
-        startGameSound.volume = 0.2
-    }, 7000);
+        startGameSound.play()
+        // startGameSound.volume = 100
+    }, 4500);
     clearInterval(gInterval)
     
    for (let i = 0; i < gBoard.length; i++) {
@@ -263,7 +267,7 @@ function lifeCounter(gameCounter) {
     
     break;
         case 1:
-            spaceL1.classList.add("hide")
+            spaceL3.classList.add("hide")
     
     break;
         case 2:
@@ -271,12 +275,12 @@ function lifeCounter(gameCounter) {
      
     break;
         case 3:
-            spaceL3.classList.add("hide")
-            alert("last one! play it safe!")
+            spaceL1.classList.add("hide")
+            
 }
 }
 function checkVictory() {
-    console.log(gBoard)
+    
     var correct=0
     for (let i = 0; i < gBoard.length; i++) {
         for (let j = 0; j < gBoard[0].length; j++) {
@@ -288,15 +292,20 @@ function checkVictory() {
                 correct++
             }
             if (correct === difficultyLevel.m) {
+                // var hideBoard = document.getElementsByClassName("board")
+                // hideBoard.classList.add(" hide")
+                startGameSound.pause()
+                winingSound.play()
                 gameCounter = -1
                 emojiImg.style.backgroundImage = "url(img/happy-emoji.gif)";
                 victoryImg.style.backgroundImage = "url(img/winner.gif)";
-                startGameSound.volume=0
-                winingSound.play()
+                gGameBoard.style.display="none"
+                
                 setTimeout(() => {
                     victoryImg.style.backgroundImage= "none"
                     emojiImg.style.backgroundImage = "url(img/Beginner-emoji.gif)"
-                    startGameSound.volume=0.2
+                    gGameBoard.style.display="flex"
+                    startGameSound.play()
                     initGame()
                 }, 7000);
                 clearInterval(gInterval)

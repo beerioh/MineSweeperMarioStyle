@@ -7,8 +7,8 @@
 body{
   background-color: rgb(6, 15, 34); 
   display: flex;
-  flex-direction: column;
-  flex: content;
+  flex-direction: row;
+  /* flex: content; */
   position: relative;
 }
 .globalContainer{  
@@ -22,18 +22,8 @@ flex-direction: row;
 .hide{
   display: none;
 }
-.spaceL{
-  line-height: 50px;
-   width: 60%;
-   height: 80%;
-   left: 8%;
-   top: 7%;
-   position: absolute;
-}
-.livesTitle{
-  font-size: 40px;
-   font-family: 'Bungee Spice', cursive;
-}
+
+
 .midContainer{
    display: flex;
    width: 100%;
@@ -48,8 +38,8 @@ position: absolute;
 background-size:cover;
 display: flex;
 width:60%;
-height: 70%;
-top: 7%;
+height: 75%;
+top: 4%;
 align-items: center;
 justify-content: center;
  background-color: #2f6a95ee;  
@@ -57,11 +47,19 @@ justify-content: center;
  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
 }
+.volume{
+  z-index: 10;
+  position: absolute;
+  top: 5%;
+  left: 5.5%;
+  
+  
+}
 .topBar{
 top: 0;
 position: absolute;
 display: flex;
-justify-content: space-between;
+justify-content:center;
 padding-top: auto;
 align-items: center;
 border-bottom: 3px solid gold;
@@ -71,60 +69,78 @@ width: 100%;
 left: 0%;
 background-color: rgb(109, 74, 10);
 }
+
+.spaceL{
+  justify-content: center;
+  z-index: 25;
+  display: flex;
+  flex-direction: row;
+  z-index: 9;
+  line-height: 50px;
+   width: 15%;
+   height: 80%;
+   left: 3%;
+   margin-top: 0%;
+   position: relative;
+}
+.livesTitle{
+  width: 100%;
+  font-size: 40px;
+   font-family: 'Bungee Spice', cursive;
+}
 .spaceL1{
+  position: absolute;
   background-image: url(../img/hart.gif);
   background-size:80%;
   background-repeat: no-repeat;
-  width:10%;
-  height: 18%;
+   width:50%;
+  height: 22%;
   z-index: 9;
-  top:8%;
-  margin-left: 5%;
-  margin-top: 1%;
+  top:7%;
   -webkit-filter: drop-shadow(10px 10px 10px #222);
 filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
 }
 .spaceL2{
+  position: absolute;
   background-image: url(../img/hart.gif);
   background-size:80%;
   background-repeat: no-repeat;
-  width:10%;
-  height:18%;
+   width:50%;
+  height: 22%;
   z-index: 9;
-  top:8%;
-  margin-top: 1%;
-  margin-left: 5%;
+  top:29%;
+
    -webkit-filter: drop-shadow(10px 10px 10px #222);
 filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
 }
 .spaceL3{
+  position: absolute;
+  z-index: 25;
   background-image: url(../img/hart.gif);
   background-size:80%;
   background-repeat: no-repeat;
-  width:10%;
-  height: 18%;
-  z-index: 9;
-  margin-top: 1%;
-  top:8%;
-  left: 4%;
-  margin-left: 5%;
+  width:50%;
+  height: 22%;
+  /* margin-top: 1%; */
+  top:51%;
+  /* left: 4%; */
+  /* margin-left: 5%; */
    -webkit-filter: drop-shadow(10px 10px 10px #222);
 filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
 }
 .score{
+position: absolute;
 font-family: 'Bungee Spice', cursive;
-margin-left:4% ;
 text-align: center;
 color: white;
 font-size: 40px;
-height: 80%;
+height: 100%;
 width: 10%;
-top: 20px;
-margin-right:4% ;
+left:4% ;
 font-size: 60px;
 height: 80%;
 width: 10%;
-margin-top: 1%;
+bottom: 20%;
 -webkit-filter: drop-shadow(50px 50px 10px #222);
 filter: drop-shadow(5px 5px 10px rgb(8, 4, 0));
 }
@@ -137,7 +153,7 @@ height: 100%;
 background-size: contain;
 background-repeat: no-repeat;
 width: 20%;
-margin-right: 3%;
+right: 2%;
 cursor: pointer;
 -webkit-filter: drop-shadow(10px 10px 10px #222);
 filter: drop-shadow(0px 25px 25px #222);
@@ -148,14 +164,15 @@ filter: drop-shadow(0px 25px 25px #222);
 filter: drop-shadow(0px 0px 25px rgb(198, 99, 7));}
 
 .timer{
+  position: absolute;
 font-family: 'Bungee Spice', cursive;
 text-align: center;
 color: white;
 font-size: 60px;
 height: 80%;
 width: 10%;
-margin-top: 1%;
-margin-right:4%;
+top: 1%;
+right:8%;
 -webkit-filter: drop-shadow(50px 50px 10px #222);
 filter: drop-shadow(5px 5px 10px rgb(8, 4, 0));
 }
@@ -166,20 +183,22 @@ flex-direction: column;
  border: 1px solid gold;
 background-color: rgb(130, 169, 196);
 width:fit-content;
-top: 19%;
+top: 15%;
+
 }
 .board-cells{
+  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
 }
 .tableRow{
-  border-spacing: 10px;
+  /* border-spacing: 20px; */
 }
 .cell{
- width: 30px;
- height: 30px;
+ width: 25px;
+ height: 25px;
  border: 3px solid rgb(55, 54, 54);
  cursor: pointer;
  text-align: center;
@@ -193,24 +212,23 @@ position: absolute;
   z-index: 9;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   color: red;
-   width: 14%;
+   width: 17%;
    height: 58%;
    position: absolute;
    align-items: right;
-   right: 4%;
-   top: 0%;
+   right: 1%;
+   top: 11%;
    font-size: 30px;
    font-family: 'Bungee Spice', cursive;
    line-height: 42px;
   
 }
 .emoji{
-  padding-right: 10%;
-  margin-top: 10%;
-  margin-left:5%;
-  height: 40%;
+ position: absolute;
+  right: 18%; 
+ top: 40%;
+  height: 60%;
   width: 70%;
   background-image: url(../img/Beginner-emoji.gif);
   background-size: contain;
@@ -269,38 +287,44 @@ color: blueviolet;
   bottom: 1px;
   left: 50%;
   margin-left: -200px;
-  transform: translateZ(0); 
+  transform: translateZ(0); /* offers a bit of a performance boost by pushing some of this processing to the GPU in Safari*/
 }
+
 @keyframes walk-cycle {  
   0% {background-position: 0 0; } 
   100% {background-position: 0 -2391px; } 
 }
+
 .foreground, .midground, .background {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0; 
-  left: 0;
+  top: 0; left: 0;
   translate3d(0,0,0); 
 }
+
 .foreground {
   animation: parallax_fg linear 10s infinite both;
   background:  url(http://stash.rachelnabors.com/24ways2012/foreground_grass.png) 0 100% repeat-x;
   z-index: 3;
 }
+
 @keyframes parallax_fg {  
   0% { background-position: -3584px 100%;} 
   100% {background-position: 0 100%; } 
 }
+
 .midground {
   animation: parallax_mg linear 20s infinite;
   background:  url(http://stash.rachelnabors.com/24ways2012/midground_grass.png) 0 100% repeat-x;
   z-index: 2;
 }
+
 @keyframes parallax_mg {  
   0% { background-position: -3000px 100%;} 
   100% {background-position: 0 100%; } 
 }
+
 .background {
   background-image:
     url(http://stash.rachelnabors.com/24ways2012/background_mountain5.png),
@@ -313,9 +337,11 @@ color: blueviolet;
   z-index: 1;
   animation: parallax_bg linear 40s infinite;
 }
+
 @keyframes parallax_bg {
   100% { background-position-x: 2400px, 2000px, 1800px, 1600px, 1200px;}
 }
+
 body {
     background: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%),
     #d2d2d2 url(http://stash.rachelnabors.com/24ways2012/background_clouds.png);
