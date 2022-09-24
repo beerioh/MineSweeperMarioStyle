@@ -37,7 +37,7 @@ var mineLevel = document.getElementById("status").addEventListener('change',func
        difficultyLevel = beginner
        gMineCounter = beginner.m
        gameCounter = -1
-       emojiImg.style="backgroundImage = \"url(../img/Beginner-emoji.gif)";
+       emojiImg.style="backgroundImage = \"url(img/Beginner-emoji.gif)";
        emojiImg.style.backgroundSize = '100%';
    }
     if (document.getElementById("Advanced").checked) {
@@ -45,7 +45,7 @@ var mineLevel = document.getElementById("status").addEventListener('change',func
      difficultyLevel = advanced
      gMineCounter = advanced.m
      gameCounter = -1
-     emojiImg.style.backgroundImage = "url(../img/expert-emoji.gif)";
+     emojiImg.style.backgroundImage = "url(img/expert-emoji.gif)";
      emojiImg.style.backgroundSize = '115%';
  }
     if (document.getElementById("Expert").checked) {
@@ -53,7 +53,7 @@ var mineLevel = document.getElementById("status").addEventListener('change',func
        difficultyLevel = expert
        gMineCounter = expert.m
        gameCounter = -1
-       emojiImg.style.backgroundImage = "url(../img/expertt-emoji.gif)";
+       emojiImg.style.backgroundImage = "url(img/expertt-emoji.gif)";
        emojiImg.style.backgroundSize = '100%';
     }
     if (document.getElementById("Bored").checked) {
@@ -61,7 +61,7 @@ var mineLevel = document.getElementById("status").addEventListener('change',func
         difficultyLevel = bored
         gMineCounter = bored.m
         gameCounter = -1
-        emojiImg.style.backgroundImage = "url(../img/Bored-emoji.gif)";
+        emojiImg.style.backgroundImage = "url(img/Bored-emoji.gif)";
         emojiImg.style.backgroundSize = '100%';
        
     }
@@ -203,10 +203,10 @@ function checkNeighbors(rowIdx, colIdx) {
 function mineClicked() {
     startGameSound.volume=0
     loosingSound.play()
-    emojiImg.style.backgroundImage = "url(../img/crying-emoji.gif)";
-    victoryImg.style.backgroundImage = "url(../img/gameOver.gif)";
+    emojiImg.style.backgroundImage = "url(img/crying-emoji.gif)";
+    victoryImg.style.backgroundImage = "url(img/gameOver.gif)";
     setTimeout(() => {
-        emojiImg.style.backgroundImage = "url(../img/Beginner-emoji.gif)"
+        emojiImg.style.backgroundImage = "url(img/Beginner-emoji.gif)"
         victoryImg.style.backgroundImage = "none";
         startGameSound.volume = 0.2
     }, 7000);
@@ -289,13 +289,13 @@ function checkVictory() {
             }
             if (correct === difficultyLevel.m) {
                 gameCounter = -1
-                emojiImg.style.backgroundImage = "url(../img/happy-emoji.gif)";
-                victoryImg.style.backgroundImage = "url(../img/winner.gif)";
+                emojiImg.style.backgroundImage = "url(img/happy-emoji.gif)";
+                victoryImg.style.backgroundImage = "url(img/winner.gif)";
                 startGameSound.volume=0
                 winingSound.play()
                 setTimeout(() => {
                     victoryImg.style.backgroundImage= "none"
-                    emojiImg.style.backgroundImage = "url(../img/Beginner-emoji.gif)"
+                    emojiImg.style.backgroundImage = "url(img/Beginner-emoji.gif)"
                     startGameSound.volume=0.2
                     initGame()
                 }, 7000);
