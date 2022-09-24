@@ -1,0 +1,322 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+     
+}
+body{
+  background-color: rgb(6, 15, 34); 
+  display: flex;
+  flex-direction: column;
+  flex: content;
+  position: relative;
+}
+.globalContainer{  
+width: 100vw;
+height: 100vh;
+position: relative;
+align-items: center;
+justify-content: space-between;
+flex-direction: row;
+}
+.hide{
+  display: none;
+}
+.spaceL{
+  line-height: 50px;
+   width: 60%;
+   height: 80%;
+   left: 8%;
+   top: 7%;
+   position: absolute;
+}
+.livesTitle{
+  font-size: 40px;
+   font-family: 'Bungee Spice', cursive;
+}
+.midContainer{
+   display: flex;
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   justify-content: center;
+}
+.gameContainer{
+z-index: 8;
+border-radius: 35px;
+position: absolute;
+background-size:cover;
+display: flex;
+width:60%;
+height: 70%;
+top: 7%;
+align-items: center;
+justify-content: center;
+ background-color: #2f6a95ee;  
+ border: 2px solid gold;
+ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+.topBar{
+top: 0;
+position: absolute;
+display: flex;
+justify-content: space-between;
+padding-top: auto;
+align-items: center;
+border-bottom: 3px solid gold;
+box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;border-radius: 35px;
+height: 12%;
+width: 100%;
+left: 0%;
+background-color: rgb(109, 74, 10);
+}
+.spaceL1{
+  background-image: url(../img/hart.gif);
+  background-size:80%;
+  background-repeat: no-repeat;
+  width:10%;
+  height: 18%;
+  z-index: 9;
+  top:8%;
+  margin-left: 5%;
+  margin-top: 1%;
+  -webkit-filter: drop-shadow(10px 10px 10px #222);
+filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
+}
+.spaceL2{
+  background-image: url(../img/hart.gif);
+  background-size:80%;
+  background-repeat: no-repeat;
+  width:10%;
+  height:18%;
+  z-index: 9;
+  top:8%;
+  margin-top: 1%;
+  margin-left: 5%;
+   -webkit-filter: drop-shadow(10px 10px 10px #222);
+filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
+}
+.spaceL3{
+  background-image: url(../img/hart.gif);
+  background-size:80%;
+  background-repeat: no-repeat;
+  width:10%;
+  height: 18%;
+  z-index: 9;
+  margin-top: 1%;
+  top:8%;
+  left: 4%;
+  margin-left: 5%;
+   -webkit-filter: drop-shadow(10px 10px 10px #222);
+filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
+}
+.score{
+font-family: 'Bungee Spice', cursive;
+margin-left:4% ;
+text-align: center;
+color: white;
+font-size: 40px;
+height: 80%;
+width: 10%;
+top: 20px;
+margin-right:4% ;
+font-size: 60px;
+height: 80%;
+width: 10%;
+margin-top: 1%;
+-webkit-filter: drop-shadow(50px 50px 10px #222);
+filter: drop-shadow(5px 5px 10px rgb(8, 4, 0));
+}
+.startGameBtn{
+background-position: center;
+border: none;
+background-color: rgba(240, 255, 255, 0);
+background-image: url(../img/game-button.png);
+height: 100%;
+background-size: contain;
+background-repeat: no-repeat;
+width: 20%;
+margin-right: 3%;
+cursor: pointer;
+-webkit-filter: drop-shadow(10px 10px 10px #222);
+filter: drop-shadow(0px 25px 25px #222);
+
+}
+.startGameBtn:hover{
+-webkit-filter: drop-shadow(10px 10px 10px #222);
+filter: drop-shadow(0px 0px 25px rgb(198, 99, 7));}
+
+.timer{
+font-family: 'Bungee Spice', cursive;
+text-align: center;
+color: white;
+font-size: 60px;
+height: 80%;
+width: 10%;
+margin-top: 1%;
+margin-right:4%;
+-webkit-filter: drop-shadow(50px 50px 10px #222);
+filter: drop-shadow(5px 5px 10px rgb(8, 4, 0));
+}
+.board{
+position: absolute;
+display: flex;
+flex-direction: column;
+ border: 1px solid gold;
+background-color: rgb(130, 169, 196);
+width:fit-content;
+top: 19%;
+}
+.board-cells{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+.tableRow{
+  border-spacing: 10px;
+}
+.cell{
+ width: 30px;
+ height: 30px;
+ border: 3px solid rgb(55, 54, 54);
+ cursor: pointer;
+ text-align: center;
+ font-size: 25px;
+ font-weight: bold;
+}
+.scoreTable{
+position: absolute;
+}
+.spaceR{
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: red;
+   width: 14%;
+   height: 58%;
+   position: absolute;
+   align-items: right;
+   right: 4%;
+   top: 0%;
+   font-size: 30px;
+   font-family: 'Bungee Spice', cursive;
+   line-height: 42px;
+  
+}
+.emoji{
+  padding-right: 10%;
+  margin-top: 10%;
+  margin-left:5%;
+  height: 40%;
+  width: 70%;
+  background-image: url(../img/Beginner-emoji.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.show{
+  background-color: #d2d2d2;
+  border-top:3px solid white;
+  border-left:3px solid white;
+  border-right:3px solid rgb(126, 126, 126);
+  border-bottom:3px solid rgb(129, 128, 128);
+  cursor: not-allowed;
+}
+.noClick {
+  pointer-events: none;
+}
+.mineImg{
+  background-color: none;
+  background-image: url(../img/mine.png);
+  background-size: contain;
+}
+.flagged{
+  background-color:antiquewhite;
+  background-image: url(../img/flag.png);
+  background-size:cover;
+}
+.color1{
+color: red;
+}
+.color2{
+color: green;
+}
+.color3{
+color: blue;
+}
+.color4{
+color: rgb(91, 66, 4);
+}
+.color5{
+color: blueviolet;
+}
+.color6{
+  color: darkblue;
+}
+.color0{
+  color: #d2d2d200;
+}
+
+.tuna {
+  animation: walk-cycle 1s steps(12) infinite;
+  background: url(http://stash.rachelnabors.com/img/codepen/tuna_sprite.png) 0 0 no-repeat; 
+  height: 200px;
+  width: 400px;
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  margin-left: -200px;
+  transform: translateZ(0); 
+}
+@keyframes walk-cycle {  
+  0% {background-position: 0 0; } 
+  100% {background-position: 0 -2391px; } 
+}
+.foreground, .midground, .background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; 
+  left: 0;
+  translate3d(0,0,0); 
+}
+.foreground {
+  animation: parallax_fg linear 10s infinite both;
+  background:  url(http://stash.rachelnabors.com/24ways2012/foreground_grass.png) 0 100% repeat-x;
+  z-index: 3;
+}
+@keyframes parallax_fg {  
+  0% { background-position: -3584px 100%;} 
+  100% {background-position: 0 100%; } 
+}
+.midground {
+  animation: parallax_mg linear 20s infinite;
+  background:  url(http://stash.rachelnabors.com/24ways2012/midground_grass.png) 0 100% repeat-x;
+  z-index: 2;
+}
+@keyframes parallax_mg {  
+  0% { background-position: -3000px 100%;} 
+  100% {background-position: 0 100%; } 
+}
+.background {
+  background-image:
+    url(http://stash.rachelnabors.com/24ways2012/background_mountain5.png),
+    url(http://stash.rachelnabors.com/24ways2012/background_mountain4.png),
+    url(http://stash.rachelnabors.com/24ways2012/background_mountain3.png),
+    url(http://stash.rachelnabors.com/24ways2012/background_mountain2.png),
+    url(http://stash.rachelnabors.com/24ways2012/background_mountain1.png);
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  z-index: 1;
+  animation: parallax_bg linear 40s infinite;
+}
+@keyframes parallax_bg {
+  100% { background-position-x: 2400px, 2000px, 1800px, 1600px, 1200px;}
+}
+body {
+    background: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%),
+    #d2d2d2 url(http://stash.rachelnabors.com/24ways2012/background_clouds.png);
+}
