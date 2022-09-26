@@ -1,5 +1,5 @@
 'use strict'
-
+var renderBoardCounter = 0
 var timeCounter = 0
 var gFlagCounter=0
 var gBoard
@@ -9,19 +9,21 @@ var gInterval
 var checkNeighborsCounter
 var audio
 let volume = document.getElementById("volume-control");
-setVolume ()
-function setVolume (){
-//   console.clear()
-  Array.from(document.querySelectorAll("audio")).forEach(function(audio){
-      audio.volume = volume.value == "" ? 50 : volume.value / 100;
-    })
-};
+
+
+
+// setVolume ()
+
 volume.addEventListener('change', setVolume);
 volume.addEventListener('input', setVolume);
-var startGameSound = document.getElementById('startGameAudio')
-var changeLevelSound = document.getElementById('difficultyLevel')
-var winingSound = document.getElementById('winingGameAudio')
-var loosingSound = document.getElementById('endGameAudio')
+const startGameSound = document.getElementById('startGameAudio')
+const changeLevelSound = document.getElementById('difficultyLevel')
+const winingSound = document.getElementById('winingGameAudio')
+const loosingSound = document.getElementById('endGameAudio')
+const flagOnSound = document.getElementById('flagOn')
+const flagOffSound = document.getElementById('flagOff')
+const clickGoodSound = document.getElementById('clickGood')
+const lifeLostSound = document.getElementById('lifeLost')
 const emojiImg = document.querySelector(".emoji")
 const victoryImg = document.querySelector(".gameContainer")
 const gGameBoard = document.querySelector(".board")
@@ -54,7 +56,7 @@ var mineLevel = document.getElementById("status").addEventListener('change',func
        difficultyLevel = expert
        gMineCounter = expert.m
        gameCounter = -1
-       emojiImg.style.backgroundImage = "url(img/expertt-emoji.gif)";
+       emojiImg.style.backgroundImage = "url(img/expert2-emoji.gif)";
        emojiImg.style.backgroundSize = '100%';
     }
     if (document.getElementById("Bored").checked) {
@@ -71,50 +73,63 @@ var mineLevel = document.getElementById("status").addEventListener('change',func
 })
      
 function initGame() {
-    startGameSound.play()
+    
     renderMineCounter()
     renderLivesCounter()
     gameCounter++
     gBoard = buildBoard(difficultyLevel)
-    renderBoard(gBoard)
+    renderBoard(gBoard) //havvvvvey
     clearInterval(gInterval)
     counterInterval(gInterval)
-    lifeCounter(gameCounter)   
+    lifeCounter(gameCounter)
+    startGameSound.play()
 }
 function buildBoard(board) {
     const buildArray = []
-    var cellNumber = 0
-    var mineIndex = createMineIndex(board)
+    
     for (var i = 0; i < board.i; i++) {
         buildArray.push([])
         for (var j = 0; j < board.j; j++) {
-        buildArray[i][j] = {
-        index:cellNumber++,
+            buildArray[i][j] = {
         minesAroundCount: "",
         isShown: false,
         isMine: false,
         checkNeighborsCounter: 0,
         noClick: false,
         isFlagged: false,
-        mineClicked:false
-            } 
+        isGreen:false
+    } 
+           
         }
     }
-    for (let i = 0; i < mineIndex.length; i++) {
-        var y = Math.floor(mineIndex[i] / (board.j))
-        var x = mineIndex[i] % board.j
-        buildArray[y][x].isMine = true 
-    }
-
-    for (let i = 0; i < buildArray.length; i++) {
-        for (let j = 0; j < buildArray[0].length; j++) {
-            if (buildArray[i][j].isMine) continue
-            buildArray[i][j].minesAroundCount = countMinesAround(i,j,buildArray)
-            
+    var arrayWithMine = createMineIndex(buildArray)
+    for (let i = 0; i < arrayWithMine.length; i++) {
+        for (let j = 0; j < arrayWithMine[0].length; j++) {
+            if (arrayWithMine[i][j].isMine) continue
+            arrayWithMine[i][j].minesAroundCount =countMinesAround(i,j,arrayWithMine)
         }
         
-    }
-    return buildArray
+    }return arrayWithMine
+}
+
+function createMineIndex(buildArray) {
+    var numbers = [];
+    gMineCounter = difficultyLevel.m
+    gFlagCounter = 0
+    var min, max, r, n, p;
+    min = 0;
+    max =  difficultyLevel.i * difficultyLevel.j -1;
+    r = difficultyLevel.m; 
+    for (let i = 0; i < r; i++) {
+        do {
+            n = Math.floor(Math.random() * (max - min + 1)) + min;
+            p = numbers.includes(n);
+            if (!p) {
+                numbers.push(n)
+                buildArray[Math.floor(n / difficultyLevel.j)][n % difficultyLevel.j].isMine = true
+                }
+        } while (p);
+    }return buildArray
 }
 function countMinesAround(rowIdx, colIdx,buildArray) {
         var mineCount = 0
@@ -124,48 +139,28 @@ function countMinesAround(rowIdx, colIdx,buildArray) {
             if (j < 0 || j >= buildArray[0].length) continue
             if (i === rowIdx && j === colIdx) continue
             var currCell = buildArray[i][j]
-            if (currCell.isMine) mineCount++
-           
+            if (currCell.isMine) mineCount++ 
         }
-    }
-    return mineCount
-}
-function createMineIndex(board) {
-    var numbers = [];
-    gMineCounter = board.m
-    gFlagCounter = 0
-    var min, max, r, n, p;
-    min = 0;
-    max =  board.i * board.j -1;
-    r = board.m; // how many numbers you want to extract
-    for (let i = 0; i < r; i++) {
-        do {
-            n = Math.floor(Math.random() * (max - min + 1)) + min;
-            p = numbers.includes(n);
-            if (!p) {
-                numbers.push(n);
-            }
-        }
-        while (p);
-    }return numbers
+    }return mineCount
 }
 function renderBoard(board) {
     var strHTML = ''
     for (var i = 0; i < board.length; i++) {
-        strHTML += '<tr class"tableRow">'
+        strHTML += '<tr>'
         for (var j = 0; j < board[0].length; j++) {
             var mineCountShow = ""
             var currCell = board[i][j]
-            var cellClass = getClassName({ i, j })
+            var cellClass = 'cell-' + i + '-' + j
             if (currCell.mineClicked){cellClass += ' show mineImg'}
-            if (currCell.isMine && currCell.isShown) { cellClass += ' mineImg', currCell.minesAroundCount = "" }
-            if (currCell.noClick) {cellClass += ' noClick'}
-            if (currCell.isShown) { cellClass += ' show', mineCountShow = currCell.minesAroundCount }//checkNeighbors(i, j)
-            if (currCell.isFlagged) { cellClass += ' flagged' }
             if (!currCell.checkNeighborsCounter &&!currCell.minesAroundCount && currCell.isShown) {
                 currCell.checkNeighborsCounter=1
-                checkNeighbors(i,j)
-            }
+                checkNeighbors(i,j)}
+            if (currCell.isShown) {cellClass += ' show', mineCountShow = currCell.minesAroundCount }//checkNeighbors(i, j)
+            if (currCell.isMine && currCell.isShown) {cellClass += ' show mineImg', currCell.minesAroundCount = "" }
+            if (currCell.noClick && !currCell.isFlagged) {cellClass += ' noClick'}
+            if (currCell.isFlagged) { cellClass += ' flagged' }
+            if (currCell.isFlagged&&currCell.isMine&&currCell.isGreen) {cellClass += ' bgGreen'}
+            if (currCell.isFlagged&&!currCell.isMine&&currCell.isGreen) {cellClass += ' bgRed'}
             strHTML += `<td class="cell ${cellClass} color${currCell.minesAroundCount}" oncontextmenu="flagCell(${i}, ${j})" onclick="cellClicked(this,${i}, ${j},event)">${mineCountShow}`
             
             strHTML += '</td>'
@@ -177,31 +172,37 @@ function renderBoard(board) {
     elBoard.innerHTML = strHTML
 }
 function cellClicked(elCell, i, j, event) {
-    if(gBoard[i][j].isFlagged)return
-    if (gBoard[i][j].isMine){ mineClicked() }
+    if (gBoard[i][j].isFlagged) { return }
+    if (!gBoard[i][j].minesAroundCount) {
+        checkNeighbors(i, j)
+    !gBoard[i][j].isShown
+    }
+    if (gBoard[i][j].isMine) {mineClicked()}
     else {
-        var changeClickedCell = gBoard[i][j]
-        changeClickedCell.isShown = true
-        var clickedCellClass = document.querySelector(`.cell-${i}-${j}`)
-        clickedCellClass.classList.add('show')
+        clickGoodSound.play()
+        gBoard[i][j].isShown = true
+        // document.querySelector(`.cell-${i}-${j}`).classList.add('show')
         renderBoard(gBoard)
+        
     }
 }
 function checkNeighbors(rowIdx, colIdx) {
-    for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
+    for (var i = rowIdx-1; i <= rowIdx + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue
         for (var j = colIdx - 1; j <= colIdx +1; j++) {
             var currCell = gBoard[i][j]
             if (j < 0 || j >= gBoard[0].length) continue
             if (i === rowIdx && j === colIdx) continue
             if (currCell.isShown) continue
+            // if(!currCell.minesAroundCount) {currCell.isShown=true}
             currCell.isShown = true
-            
+           
+            // renderBoardCounter++
         }
-        }renderBoard(gBoard)
+    } renderBoard(gBoard)
+    renderBoardCounter++
 }
 function mineClicked() {
-
     startGameSound.pause()
     loosingSound.play()
     gGameBoard.style.display="none"
@@ -212,47 +213,42 @@ function mineClicked() {
         emojiImg.style.backgroundImage = "url(img/Beginner-emoji.gif)"
         victoryImg.style.backgroundImage = "none";
         startGameSound.play()
-        // startGameSound.volume = 100
     }, 4500);
     clearInterval(gInterval)
     
-   for (let i = 0; i < gBoard.length; i++) {
-       for (let j = 0; j < gBoard[0].length; j++) {
-           if (gBoard[i][j].isMine) {
-               gBoard[i][j].mineClicked = true 
-           }
-        noClick()
-       }
-     
-   }
-}
-function noClick() {
+    
     for (let i = 0; i < gBoard.length; i++) {
         for (let j = 0; j < gBoard[0].length; j++) {
-            gBoard[i][j].noClick=true
-        }
-        
-    } renderBoard(gBoard)
+            if (gBoard[i][j].isFlagged) {
+                gBoard[i][j].isGreen=true
+                gBoard[i][j].noClick=true
+           }
+           if (gBoard[i][j].isMine) {
+               gBoard[i][j].isShown = true 
+              
+               gBoard[i][j].noClick = true
+          }else{gBoard[i][j].noClick = true}
+       }
+   }renderBoard(gBoard)
 }
 function flagCell(i, j) {
     document.addEventListener('contextmenu', event => event.preventDefault());
     var cellFlagging = document.querySelector(`.cell-${i}-${j}`)
-    if (gBoard[i][j].isShown)  return 
-        if (!gBoard[i][j].isFlagged) {
+        if (gBoard[i][j].isShown)  return 
+    if (!gBoard[i][j].isFlagged) {
+            flagOnSound.play()
             gFlagCounter++
             gBoard[i][j].isFlagged = true
-        }
-        else {
-            gBoard[i][j].isFlagged = false
+        }else{
+        gBoard[i][j].isFlagged = false
+        flagOffSound.play()
             gFlagCounter--
             cellFlagging.classList.remove('noClick')
             cellFlagging.classList.remove('flagged')
         }
         var elMineCounter = document.querySelector(".score")
-    elMineCounter.innerText = gMineCounter - gFlagCounter
-    if (gMineCounter - gFlagCounter === 0) {
-        checkVictory()
-    }
+            elMineCounter.innerText = gMineCounter - gFlagCounter
+        if (gMineCounter - gFlagCounter === 0) {checkVictory()}
         renderBoard(gBoard)
 }
 function lifeCounter(gameCounter) {
@@ -264,17 +260,17 @@ function lifeCounter(gameCounter) {
             spaceL2.classList.remove("hide")
             spaceL1.classList.remove("hide")
             spaceL3.classList.remove("hide")
-    
     break;
         case 1:
+            lifeLostSound.play()
             spaceL3.classList.add("hide")
-    
     break;
         case 2:
+             lifeLostSound.play()
             spaceL2.classList.add("hide")
-     
     break;
         case 3:
+             lifeLostSound.play()
             spaceL1.classList.add("hide")
             
 }
@@ -285,31 +281,29 @@ function checkVictory() {
     for (let i = 0; i < gBoard.length; i++) {
         for (let j = 0; j < gBoard[0].length; j++) {
             
-            if (gBoard[i][j].isFlagged === false) {
-                continue
-            }
-            if (gBoard[i][j].isMine) {
-                correct++
-            }
+            if (!gBoard[i][j].isFlagged) {continue}
+            if (gBoard[i][j].isMine) {correct++}
             if (correct === difficultyLevel.m) {
                 startGameSound.pause()
                 winingSound.play()
                 gameCounter = -1
                 emojiImg.style.backgroundImage = "url(img/happy-emoji.gif)";
+                emojiImg.style.backgroundSize = '120%';
                 victoryImg.style.backgroundImage = "url(img/winner.gif)";
                 gGameBoard.style.display="none"
                 
                 setTimeout(() => {
                     victoryImg.style.backgroundImage= "none"
                     emojiImg.style.backgroundImage = "url(img/Beginner-emoji.gif)"
+                    emojiImg.style.backgroundSize = '100%';
                     gGameBoard.style.display="flex"
                     startGameSound.play()
-                }, 7000);
+                }, 6000);
                 clearInterval(gInterval)
             }
         }
     }
-    }    
+}    
 function renderMineCounter() {
     var elMineCounter = document.querySelector(".score")
     elMineCounter.innerText= gMineCounter
@@ -323,10 +317,6 @@ function counterInterval() {
     timeCounter=0
     gInterval = setInterval(counter, 1000)
 }
-function getClassName(location) {
-    var cellClass = 'cell-' + location.i + '-' + location.j
-    return cellClass
-}
 function counter() {
     timeCounter++
     var timer = document.querySelector(".timer")
@@ -337,4 +327,10 @@ function counter() {
         timer.innerText = timeCounter
     }
 
+}
+function setVolume (){
+  console.clear()
+  Array.from(document.querySelectorAll("audio")).forEach(function(audio){
+      audio.volume = volume.value == "" ? 50 : volume.value / 100;
+    })
 }
