@@ -109,7 +109,7 @@ background-color: rgb(109, 74, 10);
    font-family: 'Bungee Spice', cursive;
 }
 .spaceL1{
-  background-image: url("/img/hart.gif");
+  background-image: url(/img/hart.gif);
   /* background-color: rgba(34, 34, 34, 0.322); */
   /* background-image: url(); */
   display: flex;
@@ -234,7 +234,7 @@ top: 16%;
  text-align: center;
  font-size: 22px;
 font-weight: bold; 
-background-image:url(img/blockImg.jpg);
+background-image:url(/img/blockImg.jpg);
 background-size: cover;
   /* border-top:3px solid rgba(9, 8, 8, 0.557);
   border-left:3px solid rgba(33, 31, 31, 0.791);
@@ -262,7 +262,7 @@ position: absolute;
   
 }
 .clickHere{
-background-image:url(img/clickHere.gif);
+background-image:url(/img/clickHere.gif);
 /* border: 1px solid red; */
  margin-top: -26%;
   height: 20%;
@@ -278,7 +278,7 @@ background-image:url(img/clickHere.gif);
  top: 54%;
   height: 60%;
   width: 70%;
-  background-image: url(img/Beginner-emoji.gif);
+  background-image: url(/img/Beginner-emoji.gif);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
