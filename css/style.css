@@ -9,7 +9,7 @@ body{
   display: flex;
  width: 100vw;
 height: 100vh;
-  background-image:url(/img/marioBackground.gif);
+  /* background-image:url(/img/marioBackground.gif); */
   background-position: center;
   background-color: rgba(4, 4, 114, 0.164);
   background-blend-mode: color;
@@ -19,6 +19,25 @@ height: 100vh;
   /* background-position-x:center; */
   position: relative;
 
+}
+.background{
+   display: flex;
+ width: 100%;
+ /* top: 0%; */
+height: 100%;
+  /* background-image:url(/img/marioBackground.gif); */
+  /* background-size: contain; */ */
+  /* background-position: center; */
+  /* background-color: rgba(4, 4, 114, 0.164); */
+  /* background-blend-mode: color; */
+  /* background-size:102%; */
+  /* background-repeat: no-repeat; */
+  /* background-position-y: 78%; */
+  /* background-position-x:center; */
+  position: relative;
+}
+.difLevels{
+  margin-bottom: 92%;
 }
 
 .globalContainer{  
@@ -250,10 +269,21 @@ position: absolute;
  
   
 }
+.clickHere{
+background-image: url(/img/clickHere.gif);
+/* border: 1px solid red; */
+ margin-top: -26%;
+  height: 20%;
+  width: 40%;
+  margin-left: 27%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .emoji{
  position: absolute;
   right: 18%; 
- top: 50%;
+ top: 54%;
   height: 60%;
   width: 70%;
   background-image: url(/img/Beginner-emoji.gif);

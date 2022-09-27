@@ -24,6 +24,7 @@ const flagOnSound = document.getElementById('flagOn')
 const flagOffSound = document.getElementById('flagOff')
 const clickGoodSound = document.getElementById('clickGood')
 const lifeLostSound = document.getElementById('lifeLost')
+const clickHere = document.querySelector('.clickHere')
 const emojiImg = document.querySelector(".emoji")
 const victoryImg = document.querySelector(".gameContainer")
 const gGameBoard = document.querySelector(".board")
@@ -34,7 +35,9 @@ const expert = { i: 12, j: 12, m: 32 }
 const bored = { i: 16, j: 30, m: 70 }
 var difficultyLevel = beginner
 
-var mineLevel = document.getElementById("status").addEventListener('change',function(){
+var mineLevel = document.getElementById("status").addEventListener('change', function () {
+    
+       
     if (document.getElementById("Beginner").checked) {
        changeLevelSound.play();
        difficultyLevel = beginner
@@ -42,6 +45,7 @@ var mineLevel = document.getElementById("status").addEventListener('change',func
        gameCounter = -1
        emojiImg.style="backgroundImage = \"url(img/Beginner-emoji.gif)";
        emojiImg.style.backgroundSize = '100%';
+        clickHere.classList.add("hide")
    }
     if (document.getElementById("Advanced").checked) {
      changeLevelSound.play();
