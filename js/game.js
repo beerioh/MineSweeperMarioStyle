@@ -43,7 +43,7 @@ var mineLevel = document.getElementById("status").addEventListener('change', fun
        difficultyLevel = beginner
        gMineCounter = beginner.m
        gameCounter = -1
-       emojiImg.style="backgroundImage = \"url(img/Beginner-emoji.gif)";
+       emojiImg.style.backgroundImage ="url(img/Beginner-emoji.gif)";
        emojiImg.style.backgroundSize = '100%';
         clickHere.classList.add("hide")
    }
