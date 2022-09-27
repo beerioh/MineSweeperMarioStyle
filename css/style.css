@@ -6,22 +6,19 @@
 }
 
 body{
-  display: flex;
- width: 100vw;
+display: flex;
+width: 100vw;
 height: 100vh;
-  /* background-image:url(/img/marioBackground.gif); */
-  background-position: center;
-  background-color: rgba(4, 4, 114, 0.164);
-  background-blend-mode: color;
-  background-size:102%;
-  background-repeat: no-repeat;
-  background-position-y: 78%;
-  /* background-position-x:center; */
-  position: relative;
+/* background-position: center; */
+background-color: rgba(4, 4, 114, 0.5);
+background-blend-mode: color;
+background-size:80%;
+background-size: cover;
+background-repeat: no-repeat;
+background-position-y: 77%;
+position: relative;
 
 }
-
-
 .difLevels{
   margin-bottom: 92%;
 }
@@ -256,7 +253,7 @@ position: absolute;
   
 }
 .clickHere{
-background-image: url(/img/clickHere.gif);
+background-image: url(img/clickHere.gif);
 /* border: 1px solid red; */
  margin-top: -26%;
   height: 20%;
