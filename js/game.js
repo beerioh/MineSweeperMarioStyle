@@ -164,7 +164,7 @@ function renderBoard(board) {
             if (currCell.noClick && !currCell.isFlagged) {cellClass += ' noClick'}
             if (currCell.isFlagged) { cellClass += ' flagged' }
             if (currCell.isFlagged&&currCell.isMine&&currCell.isGreen) {cellClass += ' bgGreen'}
-            if (currCell.isFlagged&&!currCell.isMine&&currCell.isGreen) {cellClass += ' bgRed'}
+            if (currCell.isFlagged&&!currCell.isMine&&currCell.isGreen||currCell.isMine&&currCell.isGreen) {cellClass += ' bgRed'}
             strHTML += `<td class="cell ${cellClass} color${currCell.minesAroundCount}" oncontextmenu="flagCell(${i}, ${j})" onclick="cellClicked(this,${i}, ${j},event)">${mineCountShow}`
             
             strHTML += '</td>'
@@ -181,7 +181,10 @@ function cellClicked(elCell, i, j, event) {
         checkNeighbors(i, j)
     !gBoard[i][j].isShown
     }
-    if (gBoard[i][j].isMine) {mineClicked()}
+    if (gBoard[i][j].isMine) {
+        gBoard[i][j].isGreen=true
+        mineClicked()
+    }
     else {
         clickGoodSound.play()
         gBoard[i][j].isShown = true

@@ -178,7 +178,7 @@ background-position: center;
 border: none;
 background-color: rgba(240, 255, 255, 0);
 
-background-image: url(/img/gamebutton.png);
+background-image: url(/img/gameButton.png);
 height: 100%;
 background-size: contain;
 background-repeat: no-repeat;
@@ -296,14 +296,10 @@ background-image:url(/img/clickHere.gif);
 .noClick {
   pointer-events: none;
 }
-.mineImg{
-  background-color: none;
-  background-image: url(/img/mine.png);
-  background-size: contain;
-}
+
 .flagged{
   background-color:antiquewhite;
-  background-image: url(/img/flag.png);
+  background-image: url(https://beerioh.github.io/flag.png);
   background-size:cover;
 }
 .color1{
@@ -330,13 +326,25 @@ color: blueviolet;
 .redMine{
   background-color: red;
 }
-.bgGreen{
-  background-color: rgb(3, 132, 3);
-}
+
 .bgRed{
-  background-color: rgb(144, 8, 8);
+ background-color: rgb(211, 13, 13);
 }
 .clearBg{
   background-image: url("");
   background-color: rgb(251, 251, 251);
 }
+.mineImg{
+   /* background-color: rgb(211, 13, 13); */
+  background-color: none;
+  background-image: url(/img/mine.png);
+  background-size: contain;
+}
+.bgGreen{
+  background-color: rgb(3, 132, 3);
+}
+.bgRed{
+ background-color: rgb(211, 13, 13);
+}
+/* https://beerioh.github.io/MineSweeperMarioStyle/
+https://lawrencecheng123.github.io/Seattle.jpg"); */
