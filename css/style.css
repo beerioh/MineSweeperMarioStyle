@@ -255,7 +255,7 @@ position: absolute;
   
 }
 .clickHere{
-background-image:url(img/clickHere.gif);
+background-image:url(/img/clickHere.gif);
 /* border: 1px solid red; */
  margin-top: -26%;
   height: 20%;
