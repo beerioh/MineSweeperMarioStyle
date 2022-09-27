@@ -299,7 +299,7 @@ background-image:url(/img/clickHere.gif);
 
 .flagged{
   background-color:antiquewhite;
-  background-image: url(https://github.com/beerioh/MineSweeperMarioStyle/blob/main/img/flag.PNG);
+  background-image: url('flag.PNG');
   background-size:cover;
 }
 .color1{
