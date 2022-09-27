@@ -159,7 +159,7 @@ function renderBoard(board) {
             if (!currCell.checkNeighborsCounter &&!currCell.minesAroundCount && currCell.isShown) {
                 currCell.checkNeighborsCounter=1
                 checkNeighbors(i,j)}
-            if (currCell.isShown) {cellClass += ' show', mineCountShow = currCell.minesAroundCount }//checkNeighbors(i, j)
+            if (currCell.isShown) {cellClass += ' show clearBg', mineCountShow = currCell.minesAroundCount }//checkNeighbors(i, j)
             if (currCell.isMine && currCell.isShown) {cellClass += ' show mineImg', currCell.minesAroundCount = "" }
             if (currCell.noClick && !currCell.isFlagged) {cellClass += ' noClick'}
             if (currCell.isFlagged) { cellClass += ' flagged' }
