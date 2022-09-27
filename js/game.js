@@ -28,7 +28,7 @@ const clickHere = document.querySelector('.clickHere')
 const emojiImg = document.querySelector(".emoji")
 const victoryImg = document.querySelector(".gameContainer")
 const gGameBoard = document.querySelector(".board")
-const FLAG_IMG = `src="../img/flag.png"`
+const FLAG_IMG = `src="img/flag.png"`
 const beginner = {i: 4,j:4, m: 2 };
 const advanced = { i: 8, j: 8 ,m:14}
 const expert = { i: 12, j: 12, m: 32 }
