@@ -178,7 +178,7 @@ background-position: center;
 border: none;
 background-color: rgba(240, 255, 255, 0);
 
-background-image: url(/img/gameButton.png);
+background-image: url(img/gameButton.png);
 height: 100%;
 background-size: contain;
 background-repeat: no-repeat;
