@@ -85,7 +85,7 @@ box-shadow: rgba(204, 179, 18, 0.882) 0px 0px 20px 5px;
 }
 .spaceL1{
   top: 12%;
-  background-image: url(/img/hart.gif);
+  background-image: url(../img/hart.gif);
   background-size:100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -99,7 +99,7 @@ filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
 }
 .spaceL2{
   top: 34%;
-   background-image: url(/img/hart.gif);
+   background-image: url(../img/hart.gif);
   background-size:100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -113,7 +113,7 @@ filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
 }
 .spaceL3{
   top: 56%;
-    background-image: url(/img/hart.gif);
+    background-image: url(../img/hart.gif);
   background-size:100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -165,7 +165,7 @@ background-position: center;
 border: none;
 background-color: rgba(240, 255, 255, 0);
 
-background-image: url(/img/gameButton.PNG);
+background-image: url(../img/gameButton.PNG);
 height: 100%;
 background-size: contain;
 background-repeat: no-repeat;
@@ -221,7 +221,7 @@ top: 16%;
  text-align: center;
  font-size: 22px;
 font-weight: bold; 
-background-image:url(/img/blockImg.jpg);
+background-image:url(../img/blockImg.jpg);
 background-size: cover;
 }
 .scoreTable{
@@ -250,7 +250,7 @@ position: absolute;
  top: 28%;
   height: 35%;
   width: 60%;
-  background-image: url(/img/Beginner-emoji.gif);
+  background-image: url(../img/Beginner-emoji.gif);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -279,7 +279,7 @@ filter: drop-shadow(0px 5px 10px rgb(8, 4, 0));
 
 }
 .hint1{
-  background-image: url(/img/hint.gif);
+  background-image: url(../img/hint.gif);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -290,7 +290,7 @@ height: 40%;
 top: 28%;
 }
 .hint2{
-   background-image: url(/img/hint.gif);
+   background-image: url(../img/hint.gif);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -301,7 +301,7 @@ height: 40%;
 top: 28%;
 }
 .hint3{
-   background-image: url(/img/hint.gif);
+   background-image: url(../img/hint.gif);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -321,7 +321,7 @@ top: 28%;
 
 .flagged{
   background-color:rgba(176, 231, 241, 0);
-  background-image: url(/img/flag.PNG);
+  background-image: url(../img/flag.PNG);
   background-size:cover;
 }
 .color1{
@@ -358,7 +358,7 @@ color: blueviolet;
 }
 .mineImg{
   background-color: none;
-  background-image: url(/img/mine.png);
+  background-image: url(../img/mine.png);
   background-size: contain;
 }
 .bgGreen{
