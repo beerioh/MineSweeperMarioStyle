@@ -9,10 +9,9 @@ var gInterval
 var checkNeighborsCounter
 var audio
 let volume = document.getElementById("volume-control");
-
-
-
+var isHintClick=false
 // setVolume ()
+
 
 volume.addEventListener('change', setVolume);
 volume.addEventListener('input', setVolume);
@@ -24,7 +23,6 @@ const flagOnSound = document.getElementById('flagOn')
 const flagOffSound = document.getElementById('flagOff')
 const clickGoodSound = document.getElementById('clickGood')
 const lifeLostSound = document.getElementById('lifeLost')
-const clickHere = document.querySelector('.clickHere')
 const emojiImg = document.querySelector(".emoji")
 const victoryImg = document.querySelector(".gameContainer")
 const gGameBoard = document.querySelector(".board")
@@ -34,10 +32,8 @@ const advanced = { i: 8, j: 8 ,m:14}
 const expert = { i: 12, j: 12, m: 32 }
 const bored = { i: 16, j: 30, m: 70 }
 var difficultyLevel = beginner
-
 var mineLevel = document.getElementById("status").addEventListener('change', function () {
     
-       
     if (document.getElementById("Beginner").checked) {
        changeLevelSound.play();
        difficultyLevel = beginner
@@ -45,7 +41,6 @@ var mineLevel = document.getElementById("status").addEventListener('change', fun
        gameCounter = -1
        emojiImg.style.backgroundImage ="url(img/Beginner-emoji.gif)";
        emojiImg.style.backgroundSize = '100%';
-        clickHere.classList.add("hide")
    }
     if (document.getElementById("Advanced").checked) {
      changeLevelSound.play();
@@ -54,7 +49,7 @@ var mineLevel = document.getElementById("status").addEventListener('change', fun
      gameCounter = -1
      emojiImg.style.backgroundImage = "url(img/expert-emoji.gif)";
      emojiImg.style.backgroundSize = '115%';
- }
+   }
     if (document.getElementById("Expert").checked) {
        changeLevelSound.play();
        difficultyLevel = expert
@@ -62,7 +57,7 @@ var mineLevel = document.getElementById("status").addEventListener('change', fun
        gameCounter = -1
        emojiImg.style.backgroundImage = "url(img/expert2-emoji.gif)";
        emojiImg.style.backgroundSize = '100%';
-    }
+   }
     if (document.getElementById("Bored").checked) {
         changeLevelSound.play();
         difficultyLevel = bored
@@ -70,19 +65,18 @@ var mineLevel = document.getElementById("status").addEventListener('change', fun
         gameCounter = -1
         emojiImg.style.backgroundImage = "url(img/Bored-emoji.gif)";
         emojiImg.style.backgroundSize = '100%';
-       
-    }
+   }
     initGame()
     renderMineCounter()
 })
      
 function initGame() {
-    
+    removeHideFromHint()
     renderMineCounter()
     renderLivesCounter()
     gameCounter++
     gBoard = buildBoard(difficultyLevel)
-    renderBoard(gBoard) //havvvvvey
+    renderBoard(gBoard)
     clearInterval(gInterval)
     counterInterval(gInterval)
     lifeCounter(gameCounter)
@@ -101,21 +95,21 @@ function buildBoard(board) {
         checkNeighborsCounter: 0,
         noClick: false,
         isFlagged: false,
-        isGreen:false
-    } 
-           
-        }
-    }
+        isGreen: false,
+        isRed: false,
+        isShowHint: false,
+        isClearHint:false
+     } 
+     }
+     }
     var arrayWithMine = createMineIndex(buildArray)
     for (let i = 0; i < arrayWithMine.length; i++) {
         for (let j = 0; j < arrayWithMine[0].length; j++) {
             if (arrayWithMine[i][j].isMine) continue
             arrayWithMine[i][j].minesAroundCount =countMinesAround(i,j,arrayWithMine)
         }
-        
     }return arrayWithMine
 }
-
 function createMineIndex(buildArray) {
     var numbers = [];
     gMineCounter = difficultyLevel.m
@@ -155,16 +149,23 @@ function renderBoard(board) {
             var mineCountShow = ""
             var currCell = board[i][j]
             var cellClass = 'cell-' + i + '-' + j
-            if (currCell.mineClicked){cellClass += ' show mineImg'}
-            if (!currCell.checkNeighborsCounter &&!currCell.minesAroundCount && currCell.isShown) {
-                currCell.checkNeighborsCounter=1
+            if (currCell.mineClicked) { cellClass += ' show mineImg' }
+            if (!currCell.checkNeighborsCounter &&!currCell.minesAroundCount && currCell.isShown) {currCell.checkNeighborsCounter=1
                 checkNeighbors(i,j)}
             if (currCell.isShown) {cellClass += ' show clearBg', mineCountShow = currCell.minesAroundCount }//checkNeighbors(i, j)
             if (currCell.isMine && currCell.isShown) {cellClass += ' show mineImg', currCell.minesAroundCount = "" }
             if (currCell.noClick && !currCell.isFlagged) {cellClass += ' noClick'}
             if (currCell.isFlagged) { cellClass += ' flagged' }
-            if (currCell.isFlagged&&currCell.isMine&&currCell.isGreen) {cellClass += ' bgGreen'}
-            if (currCell.isFlagged&&!currCell.isMine&&currCell.isGreen||currCell.isMine&&currCell.isGreen) {cellClass += ' bgRed'}
+            if (currCell.isFlagged&&currCell.isMine&&currCell.isShown) {cellClass += ' bgGreen'}
+            if (currCell.isFlagged&&!currCell.isMine&&currCell.isGreen||currCell.isMine&&currCell.isRED) {cellClass += ' bgRed'}
+            if (currCell.isShowHint) {
+                cellClass += ' show clearBg',
+                mineCountShow = currCell.minesAroundCount
+            }
+            if (currCell.isClearHint) {
+                var removeClass = document.querySelector(`.cell-${i}-${j}`)
+                removeClass.classList.remove('clearBg')
+            }
             strHTML += `<td class="cell ${cellClass} color${currCell.minesAroundCount}" oncontextmenu="flagCell(${i}, ${j})" onclick="cellClicked(this,${i}, ${j},event)">${mineCountShow}`
             
             strHTML += '</td>'
@@ -176,16 +177,35 @@ function renderBoard(board) {
     elBoard.innerHTML = strHTML
 }
 function cellClicked(elCell, i, j, event) {
+    if (isHintClick) {
+        for (var k=i - 1; k <= i + 1; k++) {
+            if (k < 0 || k >= gBoard.length) continue
+            for (var l = j - 1; l <= j + 1; l++) {
+                var currCell = gBoard[k][l]
+                if (l < 0 || l >= gBoard[0].length) continue
+                // if (k === i && l === k) continue
+                if (currCell.isShown) continue
+                // if (currCell.isShowHint)
+                    setTimeout(function() {isClearHint()}, 500);
+                    gBoard[k][l].isShowHint = true 
+                }
+            renderBoard(gBoard)
+            setTimeout(function() {renderBoard(gBoard)}, 1000);
+        }
+         isHintClick = false
+        gGameBoard.style.backgroundColor = "#a1cff0"
+        return
+    }
     if (gBoard[i][j].isFlagged) { return }
-    if (!gBoard[i][j].minesAroundCount) {
+    if (!gBoard[i][j].minesAroundCount&&!isHintClick) {
         checkNeighbors(i, j)
     !gBoard[i][j].isShown
     }
-    if (gBoard[i][j].isMine) {
-        gBoard[i][j].isGreen=true
+    if (gBoard[i][j].isMine&&!isHintClick) {
+        gBoard[i][j].isRed=true
         mineClicked()
     }
-    else {
+    else if(!isHintClick){
         clickGoodSound.play()
         gBoard[i][j].isShown = true
         // document.querySelector(`.cell-${i}-${j}`).classList.add('show')
@@ -201,13 +221,16 @@ function checkNeighbors(rowIdx, colIdx) {
             if (j < 0 || j >= gBoard[0].length) continue
             if (i === rowIdx && j === colIdx) continue
             if (currCell.isShown) continue
-            // if(!currCell.minesAroundCount) {currCell.isShown=true}
             currCell.isShown = true
-           
-            // renderBoardCounter++
         }
     } renderBoard(gBoard)
     renderBoardCounter++
+}
+function hintUse(number) {
+    var hintClass = document.querySelector(`.hint${number}`)
+    hintClass.classList.add('hide')
+    gGameBoard.style.backgroundColor = "gold"
+    isHintClick=true
 }
 function mineClicked() {
     startGameSound.pause()
@@ -341,3 +364,29 @@ function setVolume (){
       audio.volume = volume.value == "" ? 50 : volume.value / 100;
     })
 }
+function isClearHint() {
+    for (let i = 0; i < gBoard.length; i++) {
+        for (let j = 0; j < gBoard[0].length; j++) {
+            if (gBoard[i][j].isShowHint) {
+                gBoard[i][j].isShowHint = false
+                gBoard[i][j].isHintClick = true
+            }
+            
+        
+    
+    
+        }
+    
+    
+    }
+}
+function removeHideFromHint() {
+    var hintClass1 = document.querySelector('.hint1')
+    var hintClass2 = document.querySelector('.hint2')
+    var hintClass3 = document.querySelector('.hint3')
+    hintClass1.classList.remove('hide')
+    hintClass2.classList.remove('hide')
+    hintClass3.classList.remove('hide')
+    isHintClick=false
+}
+

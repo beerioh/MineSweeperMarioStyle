@@ -22,10 +22,10 @@
          <audio class="audio" id="lifeLost" src="audio/lifeLost.wav"></audio>
         </div>
     <div class="spaceL">
-      <div class="livesTitle">Lives Left</div>
-    <div class="spaceL1" >87878</div>
-    <div class="spaceL2 hide" background="img/hart.gif"></div>
-    <div class="spaceL3 hide" background="img/hart.gif"></div>
+          <div class="livesTitle">Lives Left</div>
+      <div class="spaceL1 hide"></div>
+      <div class="spaceL2 hide"></div>
+      <div class="spaceL3 hide"></div>
     </div>
     <div class="midContainer" >
       <div class="gameContainer">
@@ -42,13 +42,12 @@
       </div>
     </div>
     <div class="spaceR" >
-      <div class="clickHere"></div>
       <div class="difLevels">
        <fieldset id="status">
           <legend>Difficulty Level</legend>
           <div>
             <input type="radio" id="Beginner" name="drone" value="huey"
-                  >
+                  checked>
             <label for="huey">Beginner</label>
           </div>
 
@@ -68,8 +67,14 @@
         </fieldset>
     </div>
       <div class="emoji"></div>
+      <div class="hint" title="Hint...">
+        <div class="hintTitle">Hint...</div>
+        <div class="hint1" onclick=hintUse(1)></div>
+        <div class="hint2" onclick=hintUse(2)></div>
+        <div class="hint3"onclick=hintUse(3)></div>
+      </div>
     </div>
-    </img>
+    <div class="footer">Be'eri Ohayon's MineSweeper</div>
     <script src="./js/game.js"></script>
 </body>
 </html>

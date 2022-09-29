@@ -9,8 +9,6 @@ body{
 display: flex;
 width: 100vw;
 height: 100vh;
-/* background-position: center; */
-/* background-color: rgba(4, 4, 114, 0.046); */
 background-blend-mode: color;
 background-size:80%;
 background-size: cover;
@@ -19,10 +17,6 @@ background-position-y: 77%;
 position: relative;
 
 }
-.difLevels{
-  margin-bottom: 92%;
-}
-
 .globalContainer{  
 width:auto;
 height:91vh;
@@ -45,50 +39,93 @@ flex-direction: row;
    justify-content: center;
 }
 .gameContainer{
-/* z-index: 8; */
 border-radius: 35px;
 position: absolute;
 background-size:cover;
 display: flex;
 width:100%;
 height: 100%;
-/* top: ; */
 align-items: center;
 justify-content: center;
- background-color: #2f6a95d7;  
+ background-color: #2f6a95ee;  
  border: 2px solid gold;
 box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+.spaceL{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  top: 0%;
+  line-height: 50px;
+   width: 15%;
+   height: 90%;
+   left: 3%;
+   position: relative;
 }
 .volume{
    z-index: 1;
  position: absolute;
-  top: 11%;
+  top: 3%;
   left: 5%; 
 align-content: center;
 padding: 0.4rem;
-/* margin-top:2rem; */
-/* margin-left: 6rem; */
 height: 20px;
 border: 1px solid rgb(255, 191, 0);
 width: 10rem;
 background-color: rgb(34, 143, 55);
 border-radius: 35px;
-box-shadow: rgba(204, 179, 18, 0.882) 0px 0px 60px 5px;  
+box-shadow: rgba(204, 179, 18, 0.882) 0px 0px 20px 5px;  
   
 }
-.spaceL{
-  justify-content: center;
-  /* z-index: 25; */
-  display: flex;
-  flex-direction: row;
-  /* z-index: 9; */
-  line-height: 50px;
-   width: 15%;
-   height: 90%;
-   left: 3%;
-   margin-top: 13%;
-   position: relative;
+.livesTitle{
+  top: 6%;
+  font-size: 40px;
+  font-family: 'Bungee Spice', cursive;
+  position: absolute;
 }
+.spaceL1{
+  top: 12%;
+  background-image: url(/img/hart.gif);
+  background-size:100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 4rem;
+  width:7rem;
+  height: 12rem;
+  -webkit-filter: drop-shadow(10px 10px 10px #222); 
+filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
+  position: absolute;
+
+}
+.spaceL2{
+  top: 34%;
+   background-image: url(/img/hart.gif);
+  background-size:100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 4rem;
+  width:7rem;
+  height: 12rem;
+  -webkit-filter: drop-shadow(10px 10px 10px #222); 
+filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
+  position: absolute;
+
+}
+.spaceL3{
+  top: 56%;
+    background-image: url(/img/hart.gif);
+  background-size:100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 4rem;
+  width:7rem;
+  height: 12rem;
+  -webkit-filter: drop-shadow(10px 10px 10px #222); 
+filter: drop-shadow(0px 0px 25px rgb(20, 198, 44));
+  position: absolute;
+
+}
+
 .topBar{
 top: 0;
 position: absolute;
@@ -97,63 +134,13 @@ justify-content:center;
 padding-top: auto;
 align-items: center;
 border-bottom: 3px solid gold;
-box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;border-radius: 35px;
+box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 height: 12%;
 width: 100%;
 left: 0%;
-background-color: rgb(109, 74, 10);
-}
-.livesTitle{
-  width: 100%;
-  font-size: 40px;
-   font-family: 'Bungee Spice', cursive;
-}
-.spaceL1{
-  background-image: url(/img/hart.gif);
-  /* background-color: rgba(34, 34, 34, 0.322); */
-  /* background-image: url(); */
-  display: flex;
-width: 100%;
-height: 30%;
-top: 10%;
-background-position: center;
-/* background-color: rgba(4, 4, 114, 0.046); */
-/* background-blend-mode: color; */
-background-size:30%;
-/* background-size: 10%; */
-background-repeat: no-repeat;
-/* background-position-y: top; */
-/* background-position-x: left; */
-position: absolute;
-}
-.spaceL2{
-  position: absolute;
-  /* background-image: url(img/hart.gif); */
-  background-size:80%;
-  background-repeat: no-repeat;
-   width:50%;
-  height: 22%;
-  /* z-index: 9; */
-  top:29%;
+border-radius: 35px ;
+background-color: rgb(121, 82, 10);
 
-   -webkit-filter: drop-shadow(10px 10px 10px #222);
-filter: drop-shadow(0px 0px 25px rgb(232, 237, 233));
-}
-.spaceL3{
-  position: absolute;
-  border:1px solid coral;
-  /* z-index: 25; */
-  /* background-image: url(img/hart.gif); */
-  background-size:80%;
-  background-repeat: no-repeat;
-  width:50%;
-  height: 22%;
-  /* margin-top: 1%; */
-  top:49%;
-  /* left: 4%; */
-  /* margin-left: 5%; */
--webkit-filter: drop-shadow(10px 10px 10px #222); 
-filter: drop-shadow(0px 0px 25px rgb(230, 234, 231)); 
 }
 .score{
 position: absolute;
@@ -178,7 +165,7 @@ background-position: center;
 border: none;
 background-color: rgba(240, 255, 255, 0);
 
-background-image: url(/img/gameButton.png);
+background-image: url(/img/gameButton.PNG);
 height: 100%;
 background-size: contain;
 background-repeat: no-repeat;
@@ -211,7 +198,7 @@ position: absolute;
 display: flex;
 flex-direction: column;
  border: 1px solid gold;
-background-color: rgb(130, 169, 196);
+background-color: #a1cff0;
 width:fit-content;
 top: 16%;
 
@@ -236,48 +223,33 @@ top: 16%;
 font-weight: bold; 
 background-image:url(/img/blockImg.jpg);
 background-size: cover;
-  /* border-top:3px solid rgba(9, 8, 8, 0.557);
-  border-left:3px solid rgba(33, 31, 31, 0.791);
-  border-right:3px solid rgba(158, 122, 44, 0.684);
-  border-bottom:3px solid rgba(219, 156, 74, 0.817);  */
 }
 .scoreTable{
 position: absolute;
 }
 .spaceR{
-  /* z-index: 9; */
   display: flex;
   flex-direction: column;
   color: red;
    width: 17%;
-   height: 58%;
+   height: 88%;
    position: absolute;
    align-items: right;
    right: 2%;
-   top: 18%;
+   top: 11%;
    font-size: 30px;
    font-family: 'Bungee Spice', cursive;
    line-height: 42px;
- 
-  
 }
-.clickHere{
-background-image:url(/img/clickHere.gif);
-/* border: 1px solid red; */
- margin-top: -26%;
-  height: 20%;
-  width: 40%;
-  margin-left: 27%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+.difLevels{
+  margin-bottom: 98%;
 }
 .emoji{
  position: absolute;
-  right: 18%; 
- top: 54%;
-  height: 60%;
-  width: 70%;
+  right: 20%; 
+ top: 28%;
+  height: 35%;
+  width: 60%;
   background-image: url(/img/Beginner-emoji.gif);
   background-size: contain;
   background-repeat: no-repeat;
@@ -285,12 +257,62 @@ background-image:url(/img/clickHere.gif);
     -webkit-filter: drop-shadow(10px 10px 10px #222); 
  filter: drop-shadow(0px 0px 25px rgb(251, 245, 246));
 }
+.hint{
+  text-align: center;
+  position: absolute;
+  height: 13%;
+  width: 100%;
+  background-color: rgb(22, 78, 26);
+  border:3px solid gold;
+  top: 69.5%;
+  border-radius: 70px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.hintTitle{
+position: absolute;
+width: 15%;
+height: 3%;
+top: -50%;
+left: 35%;
+-webkit-filter: drop-shadow(50px 50px 10px #222);
+filter: drop-shadow(0px 5px 10px rgb(8, 4, 0));
+
+}
+.hint1{
+  background-image: url(/img/hint.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  border:1px solid gold;
+  width: 12%;
+  left: 22%;
+height: 40%;
+top: 28%;
+}
+.hint2{
+   background-image: url(/img/hint.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  border:1px solid gold;
+  width: 12%;
+  left: 44%;
+height: 40%;
+top: 28%;
+}
+.hint3{
+   background-image: url(/img/hint.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  border:1px solid gold;
+  width: 12%;
+  left: 66%;
+height: 40%;
+top: 28%;
+}
 .show{
-  background-color: #d2d2d2;
-  /* border-top:2px solid white;
-  border-left:2px solid white;
-  border-right:2px solid rgb(126, 126, 126);
-  border-bottom:2px solid rgb(129, 128, 128); */
+  background-color: #2d197f;
   cursor: not-allowed;
 }
 .noClick {
@@ -298,8 +320,8 @@ background-image:url(/img/clickHere.gif);
 }
 
 .flagged{
-  background-color:antiquewhite;
-  background-image: url('flag.PNG');
+  background-color:rgba(176, 231, 241, 0);
+  background-image: url(/img/flag.PNG);
   background-size:cover;
 }
 .color1{
@@ -332,10 +354,9 @@ color: blueviolet;
 }
 .clearBg{
   background-image: url("");
-  background-color: rgb(251, 251, 251);
+  background-color: rgb(216, 217, 218);
 }
 .mineImg{
-   /* background-color: rgb(211, 13, 13); */
   background-color: none;
   background-image: url(/img/mine.png);
   background-size: contain;
@@ -346,5 +367,19 @@ color: blueviolet;
 .bgRed{
  background-color: rgb(211, 13, 13);
 }
-/* https://beerioh.github.io/MineSweeperMarioStyle/
-https://lawrencecheng123.github.io/Seattle.jpg"); */
+.footer{
+  position: absolute;
+  bottom: -8%;
+  height: 6%;
+  width: 30%;
+  right: 1%;
+border-bottom: 3px solid gold;
+box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+border-radius: 50px ;
+background-color: rgb(121, 82, 10);
+font-family: 'Bungee Spice', cursive;
+text-align: center;
+color: white;
+font-size: 30px;
+padding-top: 20px;
+}
